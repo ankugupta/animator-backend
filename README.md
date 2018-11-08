@@ -1,2 +1,2 @@
 # animator-backend
-backend code of animator
+backend code of animator app
