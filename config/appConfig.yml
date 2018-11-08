@@ -1,0 +1,13 @@
+server:
+  port: 9988
+  servlet:
+    context-path: /
+    path: /animator
+
+
+
+spring:
+  data:
+    mongodb:
+      uri: "mongodb://localhost/animator"
+    
