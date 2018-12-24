@@ -9,4 +9,5 @@ import com.starter.animator.entity.BookEntity;
 public interface BookRepository extends MongoRepository<BookEntity, String> {
 
 	public List<BookEntity> findByPublisherId(String publisherId);
+	public BookEntity findByBookId(String bookId);
 }

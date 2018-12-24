@@ -1,11 +1,12 @@
-package com.starter.animator.beans;
+package com.starter.animator.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@JsonInclude(Include.NON_NULL)
-public class PageBean {
+@Document(collection = "page")
+public class PageEntity {
 
+	@Id
 	private String id;
 	private String pageId;
 	private String bookId;

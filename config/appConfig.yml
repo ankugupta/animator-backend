@@ -1,3 +1,8 @@
+logging:
+  level:
+    org.springframework.web : DEBUG
+    org.springframework.data: ERROR
+
 server:
   port: 9988
   servlet:
