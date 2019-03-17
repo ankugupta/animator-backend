@@ -6,6 +6,8 @@ public class UserBean {
 	private String lastName;
 	private String email;
 	private String password;
+	private String securityQuestion;
+	private String securityAnswer;
 	private String userId;
 
 	public String getFirstName() {
@@ -38,6 +40,22 @@ public class UserBean {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
 	}
 
 	public String getUserId() {
