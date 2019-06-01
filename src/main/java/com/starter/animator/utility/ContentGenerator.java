@@ -12,10 +12,10 @@ public class ContentGenerator {
 		// [publisher-name]\books\[book-id]\pages\
 		// \Harish\books\Harish_Sr_Kg_Rhyme\pages\Harish_Sr_Kg_Rhyme_P4
 
-		String publisher = "Barry Garden";
+		String publisher = "Barry_Garden";
 		String bookId = "HP_BG_Nursery_Balgeet_A";
-		Integer pageStart = 5;
-		Integer pageEnd = 24;
+		Integer pageStart = 4;
+		Integer pageEnd = 4;
 
 		// create main directories
 
@@ -56,9 +56,9 @@ public class ContentGenerator {
 							String sourceName = pageSourceThumb.getFileName().toString().substring(0,
 									sourceFullName.lastIndexOf("."));
 							String sourceExtension = sourceFullName.substring(sourceFullName.lastIndexOf("."));
-							System.out.println("page source thumb full name: " + sourceFullName);
+							/*System.out.println("page source thumb full name: " + sourceFullName);
 							System.out.println("page source thumb name: " + sourceName);
-							System.out.println("page source thumb extension: " + sourceExtension);
+							System.out.println("page source thumb extension: " + sourceExtension);*/
 							String pageTargetThumbName = sourceName + "_Thumb" + sourceExtension;
 							Files.copy(pageSourceThumb, pageTargetDir.resolve(pageTargetThumbName));
 						} else {
@@ -73,9 +73,9 @@ public class ContentGenerator {
 							String sourceName = pageSourceContent.getFileName().toString().substring(0,
 									sourceFullName.lastIndexOf("."));
 							String sourceExtension = sourceFullName.substring(sourceFullName.lastIndexOf("."));
-							System.out.println("page source content full name: " + sourceFullName);
+							/*System.out.println("page source content full name: " + sourceFullName);
 							System.out.println("page source content name: " + sourceName);
-							System.out.println("page source content extension: " + sourceExtension);
+							System.out.println("page source content extension: " + sourceExtension);*/
 							String pageTargetContentName = sourceName + "_Video" + sourceExtension;
 							Files.copy(pageSourceContent, pageTargetDir.resolve(pageTargetContentName));
 						} else {
