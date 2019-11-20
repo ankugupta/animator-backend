@@ -26,6 +26,7 @@
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>run.bat</include>
+				<include>run.sh</include>
 			</includes>
 		</fileSet>
 		<fileSet>

@@ -14,5 +14,6 @@ server:
 spring:
   data:
     mongodb:
-      uri: "mongodb://ec2-13-232-69-230.ap-south-1.compute.amazonaws.com/animator"
+      uri: "mongodb+srv://ankugupta:ejNU1XHWT6dVU5zb@cluster-animator-trtta.mongodb.net/animator?retryWrites=true&w=majority"
+#      uri: "mongodb://ec2-13-232-69-230.ap-south-1.compute.amazonaws.com/animator"
     
