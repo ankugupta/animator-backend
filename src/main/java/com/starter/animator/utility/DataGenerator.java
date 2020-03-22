@@ -13,25 +13,25 @@ import java.util.List;
 public class DataGenerator {
 
 	public static void main(String[] args) throws IOException {
-		String bookId = "PL_BB_Sr_KG_Meri_Hindi_Pustika";
-		String bookTitle = "My Book Of Hindi";
-		String publisher = "Pelican";
-		String publisherId = "Pub0001_Harish";
+		String bookId = "Prozo_B_Phonics";
+		String bookTitle = "My Book of Phonics, Level B";
+		String publisher = "Prozo";
+		String publisherId = "Pub0004_Prozo";
 		Integer pageStart = 4;
-		Integer pageEnd = 64;
+		Integer pageEnd = 12;
 
-		String schoolClass = "Senior KG";
+		String schoolClass = "Level B";
 		String subject = "English";
-		String noOfVideos = "0";
-		String noOfActivities = "61";
+		String noOfVideos = "7";
+		String noOfActivities = "0";
 		String resourceUrl = "https://s3.ap-south-1.amazonaws.com/book-animator";
 
-		Path bookDir = Paths.get("D:\\mobile apps\\zz\\queries\\" + bookId);
+		Path bookDir = Paths.get("D:\\work\\mobileapps\\zz\\queries\\" + bookId);
 		Files.createDirectories(bookDir);
 		System.out.println("Created directory for book... now writing book insertion query");
 
 		try (PrintWriter pw = new PrintWriter(new File(
-				"D:\\mobile apps\\zz\\queries\\" + bookId + "\\" + bookId + "_Book_Query.txt"))) {
+				"D:\\work\\mobileapps\\zz\\queries\\" + bookId + "\\" + bookId + "_Book_Query.txt"))) {
 			pw.println("use animator");
 			pw.println("db.book.insertMany([");
 			pw.println("{");
@@ -40,7 +40,7 @@ public class DataGenerator {
 			pw.print("\t");
 			pw.println("\"title\" : \"" + bookTitle + "\",");
 			pw.print("\t");
-			pw.println("\"imageUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/" + bookId
+			pw.println("\"imageUrl\" : \"/prod/publishers/" + publisherId + "/books/" + bookId + "/" + bookId
 					+ "_P1_Thumb.jpg" + "\",");
 			pw.print("\t");
 			pw.println("\"publisherId\" : \"" + publisherId + "\",");
@@ -51,10 +51,10 @@ public class DataGenerator {
 			pw.print("\t");
 			pw.println("\"subject\" : \"" + subject + "\",");
 			pw.print("\t");
-			pw.println("\"targetDATUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/" + bookId
+			pw.println("\"targetDATUrl\" : \"/prod/publishers/" + publisherId + "/books/" + bookId + "/" + bookId
 					+ "_Target.dat" + "\",");
 			pw.print("\t");
-			pw.println("\"targetXMLUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/" + bookId
+			pw.println("\"targetXMLUrl\" : \"/prod/publishers/" + publisherId + "/books/" + bookId + "/" + bookId
 					+ "_Target.xml" + "\",");
 			pw.print("\t");
 			pw.println("\"noOfVideos\" : " + noOfVideos + ",");
@@ -74,28 +74,28 @@ public class DataGenerator {
 		
 		List<Integer> activityAt = Arrays.asList();
 		
-		List<Integer> skipAt = Arrays.asList();
+		List<Integer> skipAt = Arrays.asList(5,7);
 		
 		try (PrintWriter pw = new PrintWriter(new File(
-				"D:\\mobile apps\\zz\\queries\\" + bookId + "\\" + bookId + "_Page_Query.txt"))) {
+				"D:\\work\\mobileapps\\zz\\queries\\" + bookId + "\\" + bookId + "_Page_Query.txt"))) {
 			pw.println("use animator");
 			pw.println("db.page.insertMany([");
 			for (int i = pageStart; i <= pageEnd; i++) {
 				if(skipAt.contains(i)){
 					continue;
 				}
-				String contentUrl = "_Activity.html";
+				/*String contentUrl = "_Activity.html";
 				String contentType = "activity";
 				if(activityAt.contains(i)){
 					contentUrl = "_Video.mp4";
 					contentType = "video";
-				}
-				/*String contentUrl = "_Video.mp4";
+				}*/
+				String contentUrl = "_Video.mp4";
 				String contentType = "video";
 				if(activityAt.contains(i)){
 					contentUrl = "_Activity.html";
 					contentType = "activity";
-				}*/
+				}
 				pw.println("{");
 				pw.print("\t");
 				String pageId = bookId + "_P" + i;
@@ -105,22 +105,13 @@ public class DataGenerator {
 				pw.print("\t");
 				pw.println("\"pageNoInBook\" : \"" + i + "\",");
 				pw.print("\t");
-				pw.println("\"imageUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/pages/" + pageId
+				pw.println("\"imageUrl\" : \"/prod/publishers/" + publisherId + "/books/" + bookId + "/pages/" + pageId
 						+ "/" + pageId + "_Thumb.jpg" + "\",");
 				pw.print("\t");
 				pw.println("\"contentType\" : \"" + contentType + "\",");
 				pw.print("\t");
-				pw.println("\"contentUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/pages/" + pageId
+				pw.println("\"contentUrl\" : \"/prod/publishers/" + publisherId + "/books/" + bookId + "/pages/" + pageId
 						+ "/" + pageId + contentUrl + "\"");
-				/*if(first) {
-				pw.println("\"contentUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/pages/" + pageId
-						+ "/" + pageId + "_P" + (i+1) + "_Video.mp4" + "\"");
-				}
-				/*else {
-					pw.println("\"contentUrl\" : \"/prod/publishers/" + publisher + "/books/" + bookId + "/pages/" + pageId
-							+ "/" + bookId + "_P" + (i-1) + "_P" + i + "_Video.mp4" + "\"");	
-				}
-				first = !first;*/
 				pw.print("}");
 				if (i < pageEnd) {
 					pw.print(",");
