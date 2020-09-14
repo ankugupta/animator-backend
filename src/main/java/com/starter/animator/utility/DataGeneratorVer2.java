@@ -13,18 +13,25 @@ import java.util.List;
 public class DataGeneratorVer2 {
 
 	public static void main(String[] args) throws IOException {
-		String bookId = "HPI_ENG_GC8";
-		String bookTitle = "Grammar Cloud 8";
+		String bookId = "HPI_MRT_MUL8";
+		String bookTitle = "MAULI 8";
 		String publisher = "HPI";
 		String publisherId = "Pub0003_HPI";
-		Integer pageStart = 5;
-		Integer pageEnd = 183;
+		Integer pageStart = 1;
+		Integer pageEnd = 200;
 
 		String schoolClass = "Class 8";
-		String subject = "English";
-		String noOfVideos = "66";
+		String subject = "MARATHI";
+		String noOfVideos = "36";
 		String noOfActivities = "0";
 		String resourceUrl = "https://cdn.harbourpress.com";
+		
+		List<Integer> activityAt = Arrays.asList();
+		
+		List<Integer> skipAt = Arrays.asList();
+		
+		List<Integer> includePages = Arrays.asList(7, 11, 12, 13, 17, 18, 19, 22, 23, 26, 27, 30, 31, 32, 33, 34, 37, 38, 39, 43, 44, 45,
+				46, 49, 52, 53, 54, 57, 58, 59, 60, 63, 64, 70, 71, 74);
 
 		Path bookDir = Paths.get("D:\\work\\mobileapps\\zz\\queries\\" + bookId);
 		Files.createDirectories(bookDir);
@@ -72,11 +79,7 @@ public class DataGeneratorVer2 {
 
 		System.out.println("now writing pages insertion query......");
 		
-		List<Integer> activityAt = Arrays.asList();
 		
-		List<Integer> skipAt = Arrays.asList();
-		
-		List<Integer> includePages = Arrays.asList(5, 6, 7, 8, 10, 11, 12, 13, 20, 21, 22, 24, 25, 26, 28, 29, 30, 35, 36, 37, 38, 39, 40, 41, 43, 44, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 129, 130, 131, 136, 137, 138, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 160, 161, 163, 164, 165, 172, 173, 175, 177, 178, 180, 181, 182, 183);
 		
 		try (PrintWriter pw = new PrintWriter(new File(
 				"D:\\work\\mobileapps\\zz\\queries\\" + bookId + "\\" + bookId + "_Page_Query.txt"))) {
